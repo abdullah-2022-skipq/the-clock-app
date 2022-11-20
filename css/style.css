@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@font-face {
+  font-family: digital_7;
+  src: url(digital-7.ttf);
+}
+
+body {
+  background-color: #dbe4e6;
+  font-family: "Poppins";
+}
+
+/* CSS only for examples not required for centering */
+.container {
+  height: 100%;
+}
+
+/* show border around full height container */
+.h-100 {
+  margin-top: 30%;
+}
+
+.ClockBG {
+  width: 50%;
+  margin: 0 auto;
+  padding: 40px 40px;
+  background-color: #f3f3f3;
+}
+
+.display {
+  background-color: #dddddd;
+  padding: 40px 20px 20px;
+  border-radius: 6px;
+}
+
+#time {
+  font-family: digital_7;
+  font-size: 5em;
+}
+
+#ap {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+span {
+  padding: 10px 10px;
+}
+
+#weekDays {
+  padding-bottom: 10px;
+}
+
+.in-active {
+  opacity: 0.2;
+}
+.active {
+  font-weight: bold;
+}
+
+.toggle {
+  margin-top: 15px;
+}
+
+.dark-clock {
+  background-color: #272e38;
+}
+.dark-display {
+  background-color: #0f1620;
+}
+
+.dark-text {
+  color: #cacaca;
+}

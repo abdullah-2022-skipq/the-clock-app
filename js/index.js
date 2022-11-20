@@ -1,9 +1,9 @@
 const timeElement = document.getElementById("time");
 const weekDaysHolder = document.getElementById("weekDays");
 const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-const h = document.getElementById("hour");
-const m = document.getElementById("min");
-const s = document.getElementById("sec");
+//const h = document.getElementById("hour");
+//const m = document.getElementById("min");
+//const s = document.getElementById("sec");
 const ap = document.getElementById("ap");
 
 function getTime() {
@@ -35,13 +35,14 @@ function getTime() {
   mins = addZeros(mins);
   sec = addZeros(sec);
 
-  let timeStr = hour + ":" + mins + ":" + sec + "  " + amPm;
+  let timeStr = hour + ":" + mins + ":" + sec;
 
   timeElement.innerText = timeStr;
-
+  /*
   h.innerText = hour;
   m.innerText = mins;
   s.innerText = sec;
+  */
   ap.innerText = amPm;
 
   //console.log("Time : "+weekDays[day])
@@ -85,19 +86,32 @@ getTime();
 // console.log("main call  get day: "+setActiveDay(0))
 
 const themeSwitch = document.getElementById("theme-switch");
+const outerDiv = document.getElementById("clockBG");
+const innerDiv = document.getElementById("display");
 
 localStorage.setItem("themeMode", "light");
 
 themeSwitch.addEventListener("click", (e) => {
-  let theme = localStorage.getItem("theme-switch");
+  let theme = localStorage.getItem("themeMode");
 
   if (theme == "light" || theme == "") {
-    document.documentElement.setAttribute("data-themeMode", "dark");
+    outerDiv.classList.add("dark-clock");
+    timeElement.classList.add("dark-text");
+    innerDiv.classList.add("dark-display");
+    weekDaysHolder.classList.add("dark-text");
+    ap.classList.add("dark-text");
+
     localStorage.setItem("themeMode", "dark");
   } else {
+    outerDiv.classList.remove("dark-clock");
+    timeElement.classList.remove("dark-text");
+    innerDiv.classList.remove("dark-display");
+    weekDaysHolder.classList.remove("dark-text");
+    ap.classList.remove("dark-text");
+
     document.documentElement.removeAttribute("data-themeMode");
     localStorage.setItem("themeMode", "light");
   }
 });
 
-module.exports = { getTime, setActiveDay };
+//module.exports = { getTime, setActiveDay };
