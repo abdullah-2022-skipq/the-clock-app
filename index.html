@@ -11,36 +11,39 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="css/style.css" />
     <title>The Clock App</title>
   </head>
-  
+
   <body>
     <!-- clock -->
-    <div class="ClockSection" style="background-color: Black;">
-      
-      <div class="ClockBG" style="background-color: rgb(0, 140, 255);">
-        
-        <div class="weekDays">
-          <div></div>
-          <h6>Sun Mon Tue Wen Thu Fri Sat</h6>
-        </div>
-        
-        <div class="Clock">
-          <div class="Time">
-            <h1>12:10:13</h1>
-          </div>
-  
-          <div class="AmPm">
-            <h6>AM</h6>
-          </div>
-        </div>
 
-        <button type="button">Theme Change</button> 
+    <div class="container">
+      <!--vertical align on parent using my-auto, horizontal align on self mx-auto-->
+      <div class="row h-100">
+        <div class="col-12 my-auto text-center">
+          <div class="ClockBG" id="clockBG">
+            <div class="display" id="display">
+              <div id="weekDays"></div>
+              <div class="Clock">
+                <div>
+                  <h1 id="time"></h1>
+                </div>
 
+                <div class="AmPm" id="ap">
+                  <h6>AM</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="themeSwitch">
+            <button type="button" class="toggle btn btn-primary" id="theme-switch">Change Mode</button>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-
     <!-- theme switch button -->
 
     <!-- bootstrap -->
@@ -64,5 +67,7 @@
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./js/index.js"></script>
   </body>
 </html>
