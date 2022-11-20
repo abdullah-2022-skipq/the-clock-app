@@ -1,0 +1,25 @@
+{
+  "name": "the-clock-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdullah-2022-skipq/the-clock-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdullah-2022-skipq/the-clock-app/issues"
+  },
+  "homepage": "https://github.com/abdullah-2022-skipq/the-clock-app#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
