@@ -84,9 +84,10 @@ function setActiveDay(day){
     return dayInText
 
 }
-
 console.log("main call : "+getTime())
 console.log("main call  get day: "+setActiveDay(0))
+
+module.exports = { getTime, setActiveDay }
 
 /**
  * 
