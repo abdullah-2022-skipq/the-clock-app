@@ -41,4 +41,3 @@ test("returns if the values of hours is valid", () => {
 test("returns True if correct day is returned", () => {
   expect(getCurrentDay()[0]).toBe(day);
 });
-

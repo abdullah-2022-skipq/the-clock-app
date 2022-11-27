@@ -1,7 +1,6 @@
 import { getCurrentTime, getCurrentDay } from "./dateTime.js";
 import { getQuote} from "./quotes.js";
-
-
+import { fetchWeather } from "./weather.js";
 const timeElement = document.getElementById("time");
 const weekDaysHolder = document.getElementById("weekDays");
 
@@ -18,14 +17,12 @@ const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 const ap = document.getElementById("ap");
 
 function getTime() {
-
   setActiveDay(getCurrentDay());
   let currentTime = getCurrentTime();
   let timeArr = currentTime.split(",");
   currentTime = timeArr[0];
   let amPm = timeArr[1];
 
-  
   timeElement.innerText = currentTime;
   /*
   h.innerText = hour;
@@ -53,11 +50,12 @@ function updateQuote(){
   
 }
 
+}
+
 
 function setActiveDay(dayArr) {
-  
-  let day=  dayArr[1];
-  weekDaysHolder.innerHTML =""
+  let day = dayArr[1];
+  weekDaysHolder.innerHTML = "";
 
   for (let index in weekDays) {
     let daySpan = document.createElement("span");
@@ -109,3 +107,5 @@ themeSwitch.addEventListener("click", (e) => {
 });
 
 //module.exports = { getTime, setActiveDay };
+
+fetchWeather();
