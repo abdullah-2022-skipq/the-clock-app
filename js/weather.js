@@ -1,4 +1,4 @@
-const getCoords = () => {
+export const getCoords = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(function (position) {
       let coords = [];
@@ -11,16 +11,16 @@ const getCoords = () => {
   });
 };
 
-const weatherHelper = (coords) => {
-  weatherAPIKey = "92ba92cb74ec3fa6497d61bc94ad64a8";
-  weatherAPIReqURL = `https://api.openweathermap.org/data/2.5/weather/?lat=${coords[0]}&lon=${coords[1]}&units=metric&APPID=${weatherAPIKey}`;
+export const weatherHelper = (coords) => {
+  const weatherAPIKey = "92ba92cb74ec3fa6497d61bc94ad64a8";
+  const weatherAPIReqURL = `https://api.openweathermap.org/data/2.5/weather/?lat=${coords[0]}&lon=${coords[1]}&units=metric&APPID=${weatherAPIKey}`;
 
   return new Promise((resolve, reject) => {
     resolve(weatherAPIReqURL);
   });
 };
 
-const fetchWeatherHelper = (url) => {
+export const fetchWeatherHelper = (url) => {
   fetch(url)
     .then((res) => res.json())
     .then((weatherData) => {
@@ -40,14 +40,20 @@ const fetchWeatherHelper = (url) => {
     });
 };
 
-const getWeather = async () => {
+export const getWeather = async () => {
   let coords = await getCoords();
   let url = await weatherHelper(coords);
   fetchWeatherHelper(url);
 };
 
-const fetchWeather = async () => {
+export const fetchWeather = async () => {
   await getWeather();
 };
 
-export default { fetchWeather };
+export default {
+  fetchWeather,
+  getCoords,
+  weatherHelper,
+  getWeather,
+  fetchWeatherHelper,
+};
