@@ -1,6 +1,16 @@
 import { getCurrentTime, getCurrentDay } from "./dateTime.js";
+import { getQuote} from "./quotes.js";
+
+
 const timeElement = document.getElementById("time");
 const weekDaysHolder = document.getElementById("weekDays");
+
+
+// Quotes 
+let quoteInfo = document.getElementsByClassName("quote")
+let authorOfQuote = document.getElementById("author_name")
+
+
 const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 //const h = document.getElementById("hour");
 //const m = document.getElementById("min");
@@ -27,7 +37,20 @@ function getTime() {
   //console.log("Time : "+weekDays[day])
 
   setTimeout(getTime, 1000);
+  console.log(quoteInfo)
 
+}
+
+function updateQuote(){
+
+    
+    let quoteR = getQuote()
+    quoteInfo[0].innerText =quoteR.quote;
+    authorOfQuote.title = quoteR.author;
+    authorOfQuote.innerText = quoteR.author;
+  
+    setTimeout(updateQuote, 5000);
+  
 }
 
 
@@ -50,7 +73,9 @@ function setActiveDay(dayArr) {
   }
 }
 
+
 getTime();
+updateQuote();
 // console.log("main call : "+getTime())
 // console.log("main call  get day: "+setActiveDay(0))
 
