@@ -50,7 +50,7 @@ function updateQuote(){
   
 }
 
-}
+
 
 
 function setActiveDay(dayArr) {
