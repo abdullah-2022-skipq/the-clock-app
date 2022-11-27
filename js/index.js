@@ -1,3 +1,4 @@
+import { getCurrentTime, getCurrentDay } from "./dateTime.js";
 const timeElement = document.getElementById("time");
 const weekDaysHolder = document.getElementById("weekDays");
 const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -7,37 +8,15 @@ const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 const ap = document.getElementById("ap");
 
 function getTime() {
-  let date = new Date();
-  let day = date.getDay();
-  let hour = date.getHours();
-  let mins = date.getMinutes();
-  let sec = date.getSeconds();
-  let amPm = "AM";
 
-  setActiveDay(day);
+  setActiveDay(getCurrentDay());
+  let currentTime = getCurrentTime();
+  let timeArr = currentTime.split(",");
+  currentTime = timeArr[0];
+  let amPm = timeArr[1];
 
-  if (hour >= 12) {
-    amPm = "PM";
-  } else {
-    amPm = "AM";
-  }
-
-  // convert 24 to 12
-  if (hour == 0) {
-    hour = 12;
-  } else if (hour > 12) {
-    hour = hour - 12;
-  } else {
-    hour = hour;
-  }
-
-  hour = addZeros(hour);
-  mins = addZeros(mins);
-  sec = addZeros(sec);
-
-  let timeStr = hour + ":" + mins + ":" + sec;
-
-  timeElement.innerText = timeStr;
+  
+  timeElement.innerText = currentTime;
   /*
   h.innerText = hour;
   m.innerText = mins;
@@ -49,24 +28,15 @@ function getTime() {
 
   setTimeout(getTime, 1000);
 
-  return timeStr;
 }
 
-function addZeros(val) {
-  let updated = "";
-  if (val < 10) {
-    updated = "0" + val;
-  } else {
-    updated = val;
-  }
-  return updated;
-}
 
-function setActiveDay(day) {
-  weekDaysHolder.innerHTML = "";
-  let dayInText = weekDays[day];
+function setActiveDay(dayArr) {
+  
+  let day=  dayArr[1];
+  weekDaysHolder.innerHTML =""
 
-  for (index in weekDays) {
+  for (let index in weekDays) {
     let daySpan = document.createElement("span");
     daySpan.innerText = weekDays[index] + " ";
     daySpan.className = "";
@@ -78,7 +48,6 @@ function setActiveDay(day) {
     }
     weekDaysHolder.appendChild(daySpan);
   }
-  return dayInText;
 }
 
 getTime();
