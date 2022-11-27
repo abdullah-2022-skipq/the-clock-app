@@ -1,5 +1,5 @@
 import { getCurrentTime, getCurrentDay } from "./dateTime.js";
-import { fetchWeather } from "./weather";
+import { fetchWeather } from "./weather.js";
 const timeElement = document.getElementById("time");
 const weekDaysHolder = document.getElementById("weekDays");
 const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];

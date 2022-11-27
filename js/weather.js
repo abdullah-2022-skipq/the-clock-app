@@ -52,8 +52,4 @@ export const fetchWeather = async () => {
 
 export default {
   fetchWeather,
-  getCoords,
-  weatherHelper,
-  getWeather,
-  fetchWeatherHelper,
 };
