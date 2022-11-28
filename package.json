@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/abdullah-2022-skipq/the-clock-app#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "jest": "^29.3.1"
   }
 }

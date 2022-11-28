@@ -72,3 +72,28 @@ span {
 .dark-text {
   color: #cacaca;
 }
+
+.info {
+  background-color: white;
+  height: 400px;
+  margin-top: 15%;
+  margin-bottom: 5em;
+  width: 60%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  padding-top: 2.5em;
+  color: #f4ab3c;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.author {
+  text-align: end;
+  font-size: medium;
+  color: #f4ab3c;
+  font-weight: bold;
+  margin-right: 2%;
+}

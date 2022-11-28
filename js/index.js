@@ -1,72 +1,46 @@
+import { getCurrentTime, getCurrentDay } from "./dateTime.js";
+import { getQuote } from "./quotes.js";
+import { fetchWeather } from "./weather.js";
+
+// Time
 const timeElement = document.getElementById("time");
 const weekDaysHolder = document.getElementById("weekDays");
+
+// Quotes
+let quoteInfo = document.getElementsByClassName("quote");
+let authorOfQuote = document.getElementById("author_name");
+
 const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-//const h = document.getElementById("hour");
-//const m = document.getElementById("min");
-//const s = document.getElementById("sec");
 const ap = document.getElementById("ap");
 
 function getTime() {
-  let date = new Date();
-  let day = date.getDay();
-  let hour = date.getHours();
-  let mins = date.getMinutes();
-  let sec = date.getSeconds();
-  let amPm = "AM";
+  setActiveDay(getCurrentDay());
+  let currentTime = getCurrentTime();
+  let timeArr = currentTime.split(",");
+  currentTime = timeArr[0];
+  let amPm = timeArr[1];
 
-  setActiveDay(day);
-
-  if (hour >= 12) {
-    amPm = "PM";
-  } else {
-    amPm = "AM";
-  }
-
-  // convert 24 to 12
-  if (hour == 0) {
-    hour = 12;
-  } else if (hour > 12) {
-    hour = hour - 12;
-  } else {
-    hour = hour;
-  }
-
-  hour = addZeros(hour);
-  mins = addZeros(mins);
-  sec = addZeros(sec);
-
-  let timeStr = hour + ":" + mins + ":" + sec;
-
-  timeElement.innerText = timeStr;
-  /*
-  h.innerText = hour;
-  m.innerText = mins;
-  s.innerText = sec;
-  */
+  timeElement.innerText = currentTime;
   ap.innerText = amPm;
 
-  //console.log("Time : "+weekDays[day])
-
   setTimeout(getTime, 1000);
-
-  return timeStr;
+  // console.log(quoteInfo)
 }
 
-function addZeros(val) {
-  let updated = "";
-  if (val < 10) {
-    updated = "0" + val;
-  } else {
-    updated = val;
-  }
-  return updated;
+function updateQuote() {
+  let quoteR = getQuote();
+  quoteInfo[0].innerText = quoteR.quote;
+  authorOfQuote.title = quoteR.author;
+  authorOfQuote.innerText = quoteR.author;
+
+  setTimeout(updateQuote, 5000);
 }
 
-function setActiveDay(day) {
+function setActiveDay(dayArr) {
+  let day = dayArr[1];
   weekDaysHolder.innerHTML = "";
-  let dayInText = weekDays[day];
 
-  for (index in weekDays) {
+  for (let index in weekDays) {
     let daySpan = document.createElement("span");
     daySpan.innerText = weekDays[index] + " ";
     daySpan.className = "";
@@ -78,12 +52,10 @@ function setActiveDay(day) {
     }
     weekDaysHolder.appendChild(daySpan);
   }
-  return dayInText;
 }
 
 getTime();
-// console.log("main call : "+getTime())
-// console.log("main call  get day: "+setActiveDay(0))
+updateQuote();
 
 const themeSwitch = document.getElementById("theme-switch");
 const outerDiv = document.getElementById("clockBG");
@@ -114,4 +86,4 @@ themeSwitch.addEventListener("click", (e) => {
   }
 });
 
-//module.exports = { getTime, setActiveDay };
+fetchWeather();

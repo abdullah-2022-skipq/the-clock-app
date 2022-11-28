@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "the-clock-app",
+  "author": "aden-abuzar-abdullah",
+  "permissions": ["geolocation", "unlimitedStorage"],
+  "version": "1.0.0",
+  "description": "a better new-tab!",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

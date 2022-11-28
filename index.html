@@ -38,12 +38,45 @@
             </div>
           </div>
           <div class="themeSwitch">
-            <button type="button" class="toggle btn btn-primary" id="theme-switch">Change Mode</button>
+            <button
+              type="button"
+              class="toggle btn btn-primary"
+              id="theme-switch"
+            >
+              Change Mode
+            </button>
+          </div>
+        </div>
+
+        <!-- weather -->
+        <div class="weather">
+          <div class="weatherDeatils">
+            <div class="weatherTemp">
+              <span id="weatherTempSpan"></span>
+              <span>&deg;C</span>
             </div>
+            <div class="weatherDescription">
+              <p id="weatherDesc"></p>
+            </div>
+            <div class="weatherImg">
+              <img src="" alt="" id="weatherImg" />
+            </div>
+          </div>
+        </div>
+
+        <!-- quote -->
+        <div class="col-12 col-lg-12">
+          <blockquote class="blocks text-center">
+            <h2 class="quote">Press new quote button to get a quote :)</h2>
+          </blockquote>
+
+          <div class="blockquote-footer text-end author">
+            <cite id="author_name" title="Source Title">Author</cite>
           </div>
         </div>
       </div>
     </div>
+
     <!-- theme switch button -->
 
     <!-- bootstrap -->
@@ -68,6 +101,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>
