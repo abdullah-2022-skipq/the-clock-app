@@ -17,67 +17,48 @@
   </head>
 
   <body>
-    <!-- clock -->
-
-    <div class="container">
-      <!--vertical align on parent using my-auto, horizontal align on self mx-auto-->
-      <div class="row h-100">
-        <div class="col-12 my-auto text-center">
-          <div class="ClockBG" id="clockBG">
-            <div class="display" id="display">
-              <div id="weekDays"></div>
-              <div class="Clock">
-                <div>
-                  <h1 id="time"></h1>
-                </div>
-
-                <div class="AmPm" id="ap">
-                  <h6>AM</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="themeSwitch">
-            <button
-              type="button"
-              class="toggle btn btn-primary"
-              id="theme-switch"
-            >
-              Change Mode
-            </button>
-          </div>
-        </div>
-
-        <!-- weather -->
-        <div class="weather">
-          <div class="weatherDeatils">
-            <div class="weatherTemp">
-              <span id="weatherTempSpan"></span>
-              <span>&deg;C</span>
-            </div>
-            <div class="weatherDescription">
-              <p id="weatherDesc"></p>
-            </div>
-            <div class="weatherImg">
-              <img src="" alt="" id="weatherImg" />
-            </div>
-          </div>
-        </div>
-
-        <!-- quote -->
-        <div class="col-12 col-lg-12">
-          <blockquote class="blocks text-center">
-            <h2 class="quote">Press new quote button to get a quote :)</h2>
-          </blockquote>
-
-          <div class="blockquote-footer text-end author">
-            <cite id="author_name" title="Source Title">Author</cite>
-          </div>
-        </div>
+    <main id="clockBG">
+      <div class="theme_switch">
+          <label class="switch">
+              <input type="checkbox" id="theme-switch">
+              <span class="slider round"></span>
+          </label>    
       </div>
-    </div>
+      
+      <section class="Glass">
+        <div id="weekDays"></div>
+          <div class="clock">
+              <div id ="time"></div>
+              <div id ="ap"></div>
+          </div>
+          
 
-    <!-- theme switch button -->
+          <div class="qoute">
+            <blockquote class="blocks ">
+              <h3 class="quote"></h3>
+            </blockquote>
+  
+            <div class="blockquote-footer text-end author">
+              <cite id="author_name" title="Source Title"></cite>
+            </div>
+          </div>
+      </section>
+      <div class="weather">
+        <div class="weatherDeatils">
+          <div class="weatherImg">
+            <img src="" alt="" id="weatherImg" />
+          </div>
+          <div class="weatherTemp">
+            <span id="weatherTempSpan"></span>
+            <strong>&deg;C</strong>
+          </div>
+          <div class="weatherDescription">
+            <span id="weatherDesc"></span>
+          </div>
+        </div>
+    </div>
+  </main>
+  
 
     <!-- bootstrap -->
     <script

@@ -5,19 +5,149 @@
   src: url(digital-7.ttf);
 }
 
-body {
-  background-color: #dbe4e6;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins";
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
-/* CSS only for examples not required for centering */
-.container {
-  height: 100%;
+/*------------ Styling the check box to make it a round slider ------------*/
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-/* show border around full height container */
-.h-100 {
-  margin-top: 30%;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(143, 134, 134);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #5a5a5a;
+  box-shadow: 0 0 10px #ffffff;
+}
+
+input:not(:checked)+ .slider {
+  box-shadow: 0 0 10px rgb(30, 29, 29);
+}
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/*Styling the glass section*/
+.Glass {
+  /*Making the structure of the glass*/
+  background: white;
+  min-height: 50vh;
+  width: 55%;
+
+  /*linear-gradient Coloring with opacity using rgba*/
+  background: linear-gradient(
+    to left bottom,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 1rem;
+
+  /*Aligning clock and qoute divs using Flex box*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+
+  /* Adding blur effect*/
+  backdrop-filter: blur(0.2rem);
+}
+
+.clock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  font-family: digital_7;
+}
+
+/*Positioning the switch in flex*/
+.theme_switch {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+/* Styling the main section*/
+main {
+  /*spaning to full screen height*/
+  min-height: 100vh;
+
+  /*making background linearly gradient*/
+  /*
+  background: linear-gradient(
+    to left top,
+    rgb(167, 149, 255),
+    rgb(235, 235, 235)
+  );
+*/
+  /*Making a flex box to align the glass class in the center*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-image: url("/resources/light_mode.jpg");
+  background-size: cover; /* image does not zoom anymore */
 }
 
 .ClockBG {
@@ -27,20 +157,16 @@ body {
   background-color: #f3f3f3;
 }
 
-.display {
-  background-color: #dddddd;
-  padding: 40px 20px 20px;
-  border-radius: 6px;
-}
-
 #time {
   font-family: digital_7;
-  font-size: 5em;
+  font-size: 7em;
+  display: flex;
+  padding-right: 10%;
 }
 
 #ap {
-  font-size: 1.5em;
-  font-weight: bold;
+  display: flex;
+  font-size: 2.5em;
 }
 
 span {
@@ -49,51 +175,55 @@ span {
 
 #weekDays {
   padding-bottom: 10px;
+  font-size: 1.8em;
 }
 
 .in-active {
-  opacity: 0.2;
+  opacity: 0.3;
 }
 .active {
   font-weight: bold;
 }
 
-.toggle {
-  margin-top: 15px;
-}
-
-.dark-clock {
-  background-color: #272e38;
-}
-.dark-display {
-  background-color: #0f1620;
-}
-
-.dark-text {
-  color: #cacaca;
-}
-
-.info {
-  background-color: white;
-  height: 400px;
-  margin-top: 15%;
-  margin-bottom: 5em;
-  width: 60%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-h2 {
-  padding-top: 2.5em;
-  color: #f4ab3c;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 .author {
   text-align: end;
   font-size: medium;
-  color: #f4ab3c;
+  color: #000000;
   font-weight: bold;
   margin-right: 2%;
+}
+
+.weatherDeatils {
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  left: 0.85%;
+  bottom: 1%;
+
+  background: white;
+
+  /*linear-gradient Coloring with opacity using rgba*/
+  background: linear-gradient(
+    to left bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 1rem;
+
+  /* Adding blur effect*/
+  backdrop-filter: blur(0.2rem);
+}
+
+#weatherTempSpan {
+  padding-right: 0px;
+}
+
+#weatherDesc {
+  margin-right: 25px;
+}
+
+.qoute {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
 }
