@@ -24,7 +24,6 @@ function getTime() {
   ap.innerText = amPm;
 
   setTimeout(getTime, 1000);
-  // console.log(quoteInfo)
 }
 
 function updateQuote() {
@@ -33,7 +32,7 @@ function updateQuote() {
   authorOfQuote.title = quoteR.author;
   authorOfQuote.innerText = quoteR.author;
 
-  setTimeout(updateQuote, 5000);
+  setTimeout(updateQuote, 30000);
 }
 
 function setActiveDay(dayArr) {
@@ -54,36 +53,27 @@ function setActiveDay(dayArr) {
   }
 }
 
-getTime();
-updateQuote();
-
 const themeSwitch = document.getElementById("theme-switch");
 const outerDiv = document.getElementById("clockBG");
-const innerDiv = document.getElementById("display");
-
-localStorage.setItem("themeMode", "light");
 
 themeSwitch.addEventListener("click", (e) => {
   let theme = localStorage.getItem("themeMode");
-
   if (theme == "light" || theme == "") {
-    outerDiv.classList.add("dark-clock");
-    timeElement.classList.add("dark-text");
-    innerDiv.classList.add("dark-display");
-    weekDaysHolder.classList.add("dark-text");
-    ap.classList.add("dark-text");
+    outerDiv.style.backgroundImage = 'url("/resources/dark_mode.jpg")';
 
     localStorage.setItem("themeMode", "dark");
   } else {
-    outerDiv.classList.remove("dark-clock");
-    timeElement.classList.remove("dark-text");
-    innerDiv.classList.remove("dark-display");
-    weekDaysHolder.classList.remove("dark-text");
-    ap.classList.remove("dark-text");
+    outerDiv.style.backgroundImage = 'url("/resources/light_mode.jpg")';
 
     document.documentElement.removeAttribute("data-themeMode");
     localStorage.setItem("themeMode", "light");
   }
 });
 
-fetchWeather();
+window.addEventListener("load", (event) => {
+  getTime();
+  updateQuote();
+  fetchWeather();
+  themeSwitch.checked = false;
+  localStorage.setItem("themeMode", "light");
+});
